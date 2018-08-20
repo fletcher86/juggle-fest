@@ -28,7 +28,9 @@ J J10 H:6 E:4 P:5 C0,C2,C1
 J J11 H:8 E:4 P:7 C0,C1,C2
 </pre>
 
-Output file One line per circuit assignment. Each line should contain the circuit name followed by the juggler name, followed by that juggler’s circuits in order of preference and the match score for that circuit. The line should include all jugglers matched to the circuit. The example below is a valid assignment for the input file above.
+<h1>Output file</h1>
+One line per circuit assignment. Each line should contain the circuit name followed by the juggler name, followed by that juggler’s circuits in order of preference and the match score for that circuit. The line should include all jugglers matched to the circuit. The example below is a valid assignment for the input file above.
+
 <pre>
 C2 J6 C2:128 C1:31 C0:188, J3 C2:120 C0:171 C1:31, J10 C0:120 C2:86 C1:21, J0 C2:83 C0:104 C1:17
 C1 J9 C1:23 C2:86 C0:94, J8 C1:21 C0:100 C2:80, J7 C2:75 C1:20 C0:106, J1 C0:119 C2:74 C1:18
