@@ -1,7 +1,7 @@
 package com.fletcher;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -13,7 +13,7 @@ public class Circuit
 	private Integer pizzaz;
 	private List<Juggler> assignedJugglers = new ArrayList<>();
 
-	private static Map<String, Circuit> circuits = new HashMap<>();
+	private static Map<String, Circuit> circuits = new LinkedHashMap<>();
 
 	private Circuit()
 	{
@@ -103,13 +103,31 @@ public class Circuit
 		return rtnJuggler;
 	}
 
-	public static Circuit getOptimalCircuit(Juggler j)
+	public static Circuit getAlternateCircuit(Juggler j, int maxPerCircuit)
 	{
 		Circuit optCircuit = null;
-		int bestscore = 0;
+		int bestscore = -999;
 
 		for (Circuit c : circuits.values())
 		{
+			/*
+			 * If circuit is already maxed out, skip
+			 */
+			if (c.getAssignedJugglers().size() >= maxPerCircuit)
+			{
+				continue;
+			}
+			/*
+			 * if circuit is already a preference we have to exclude it because juggler wasn't
+			 * qualified or already got booted out because of a better qualified juggler.
+			 */
+			if (j.getCircuitPrefsMap().containsKey(c.getName()))
+			{
+				continue;
+			}
+			/*
+			 * only include circuits the juggler may be able to compete in
+			 */
 			if (j.getCircuitScore(c) > bestscore)
 			{
 				bestscore = j.getCircuitScore(c);
@@ -117,9 +135,9 @@ public class Circuit
 			}
 		}
 
-		if (j.getCircuitPrefsMap().containsKey(optCircuit.getName()))
+		if (optCircuit == null)
 		{
-			System.out.println();
+			System.out.print("");
 		}
 		return optCircuit;
 	}

@@ -4,9 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -45,7 +43,7 @@ public class JuggleFest
 	 */
 	public static String[] readFile() throws FileNotFoundException
 	{
-		final Scanner scanner = new Scanner(new File("jugglers0.txt"));
+		final Scanner scanner = new Scanner(new File("jugglers.txt"));
 
 		StringBuilder sb = new StringBuilder();
 
@@ -187,6 +185,8 @@ public class JuggleFest
 						 */
 
 						c.removeJuggler(lastJuggler);
+						lastJuggler.setAssigned(false);
+						lastJuggler.setAssignedCircuit(null);
 						jugglerList.add(lastJuggler);
 
 						c.addJuggler(nextJuggler);
@@ -204,8 +204,11 @@ public class JuggleFest
 
 			if (!nextJuggler.isAssigned())
 			{
-				Circuit c = Circuit.getOptimalCircuit(nextJuggler);
-				System.out.println(c);
+				Circuit c = Circuit.getAlternateCircuit(nextJuggler, maxJugglersPerCircuit);
+				c.addJuggler(nextJuggler);
+				jugglerList.remove(nextJuggler);
+				nextJuggler.setAssigned(true);
+				nextJuggler.setAssignedCircuit(c);
 			}
 		}
 
@@ -217,15 +220,15 @@ public class JuggleFest
 		{
 			int ctr = 0;
 
-			System.out.printf("%s",c.getName());
+			System.out.printf("%s", c.getName());
 			for (Juggler j : c.getAssignedJugglers())
 			{
-				System.out.printf(" %s",j.getName());
+				System.out.printf(" %s", j.getName());
 				for (Circuit c1 : j.getCircuitPrefsMap().values())
 				{
-					System.out.printf(" %s:%2d",c1.getName(),j.getCircuitScore(c1));
+					System.out.printf(" %s:%2d", c1.getName(), j.getCircuitScore(c1));
 				}
-				if (ctr < c.getAssignedJugglers().size()-1)
+				if (ctr < c.getAssignedJugglers().size() - 1)
 					System.out.print(",");
 				ctr++;
 			}
