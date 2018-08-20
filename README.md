@@ -6,7 +6,8 @@ Each participant will be on exactly one team and there will be a distinct circui
 
 To help us create the juggler/circuit assignments write a program in a language of your choice that takes as input a file of circuits and jugglers and outputs a file of circuits and juggler assignments. The number of jugglers assigned to a circuit should be the number of jugglers divided by the number of circuits. Assume that the number of circuits and jugglers will be such that each circuit will have the same number of jugglers with no remainder.
 
-Input file One line per circuit or juggler. All circuits will come before any jugglers. Circuit lines start with a C and juggler lines start with a J. Names of circuits and jugglers will never have spaces. A skill and the rating for that skill are separated by a colon. Circuit lines have the circuit names followed by skills. Juggler lines have the juggler names followed by skills, followed by circuits in order of preference, separated by commas. 
+<h2>Input file</h2>
+One line per circuit or juggler. All circuits will come before any jugglers. Circuit lines start with a C and juggler lines start with a J. Names of circuits and jugglers will never have spaces. A skill and the rating for that skill are separated by a colon. Circuit lines have the circuit names followed by skills. Juggler lines have the juggler names followed by skills, followed by circuits in order of preference, separated by commas. 
 
 Example:
 <pre>
@@ -28,7 +29,7 @@ J J10 H:6 E:4 P:5 C0,C2,C1
 J J11 H:8 E:4 P:7 C0,C1,C2
 </pre>
 
-<h1>Output file</h1>
+<h2>Output file</h2>
 One line per circuit assignment. Each line should contain the circuit name followed by the juggler name, followed by that juggler’s circuits in order of preference and the match score for that circuit. The line should include all jugglers matched to the circuit. The example below is a valid assignment for the input file above.
 
 <pre>
