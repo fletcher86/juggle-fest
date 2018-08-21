@@ -245,7 +245,7 @@ public class JuggleFest
 				System.out.printf(" %s", j.getName());
 				for (Circuit c1 : j.getCircuitPrefsMap().values())
 				{
-					System.out.printf(" %s:%2d", c1.getName(), j.getCircuitScore(c1));
+					System.out.printf(" %s:%d", c1.getName(), j.getCircuitScore(c1));
 				}
 				if (ctr < c.getAssignedJugglers().size() - 1)
 					System.out.print(",");
