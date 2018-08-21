@@ -46,3 +46,7 @@ cd juggle-fest
 ./gradlew clean build
 java -jar ./build/libs/juggle-fest-1.0.jar < jugglers.txt
 </pre>
+
+<h2>Additional Comments</h2>
+In order to insure fairness of juggler assignments to circuits, the jugglers were selected and assigned randomly.  If the juggler preferences where not met because their score was not high enough for their desired circuit, an optimal alternative circuit was chosen for the juggler. However, if jugglers had high enough scores, they were matched up to their desired circuits. Due to the stochastic nature of the program, results will vary from run to run.  
+
