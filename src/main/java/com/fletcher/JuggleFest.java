@@ -41,7 +41,7 @@ public class JuggleFest
 	 */
 	public static String[] readFile() throws FileNotFoundException
 	{
-		final Scanner scanner = new Scanner(new File("jugglers0.txt"));
+		final Scanner scanner = new Scanner(new File("jugglers.txt"));
 
 		StringBuilder sb = new StringBuilder();
 
