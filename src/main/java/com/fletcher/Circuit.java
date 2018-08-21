@@ -135,10 +135,6 @@ public class Circuit
 			}
 		}
 
-		if (optCircuit == null)
-		{
-			System.out.print("");
-		}
 		return optCircuit;
 	}
 
