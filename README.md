@@ -38,3 +38,6 @@ C0 J5 C0:161 C2:112 C1:26, J11 C0:154 C1:27 C2:108, J2 C0:128 C2:68 C1:18, J4 C0
 </pre>
 
 Write a program in Java to produce an assignment scheme for the data in the attached file “jugglers.txt’ - it contains 2000 circuits and 12000 jugglers.
+
+<h2>To run</h2>
+> java -jar juggle-fest-1.0.jar < jugglers.txt
