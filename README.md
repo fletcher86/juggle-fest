@@ -48,5 +48,5 @@ java -jar ./build/libs/juggle-fest-1.0.jar < jugglers.txt
 </pre>
 
 <h2>Additional Comments</h2>
-In order to insure fairness of juggler assignments to circuits, the jugglers were selected and assigned randomly.  If the juggler preferences where not met because their score was not high enough for their desired circuit, an optimal alternative circuit was chosen for the juggler. However, if jugglers had high enough scores, they were matched up to their desired circuits. Due to the stochastic nature of the program, juggler assignments will vary from run to run.  
+In order to insure fairness of juggler assignments to circuits, the jugglers were selected and assigned randomly.  If jugglers had high enough scores, they were matched up to their desired circuits. If the juggler preferences where not met, it is because their score was not high enough and were probably edged out by a more competitive juggler.  In this case, an optimal alternative circuit was chosen for the juggler. However, due to the stochastic nature of the program, juggler assignments will vary from run to run.  
 
