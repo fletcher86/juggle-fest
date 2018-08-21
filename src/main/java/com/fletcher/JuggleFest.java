@@ -27,9 +27,7 @@ public class JuggleFest
 
 		toStruct(fileData);
 
-		printInput(fileData);
-
-		score();
+		assignJugglers();
 
 		printOutput();
 
@@ -43,7 +41,7 @@ public class JuggleFest
 	 */
 	public static String[] readFile() throws FileNotFoundException
 	{
-		final Scanner scanner = new Scanner(new File("jugglers.txt"));
+		final Scanner scanner = new Scanner(new File("jugglers0.txt"));
 
 		StringBuilder sb = new StringBuilder();
 
@@ -58,14 +56,13 @@ public class JuggleFest
 		return sb.toString().split("###");
 	}
 
-	public static void printInput(String[] lines)
-	{
-		for (int i = 0; i < lines.length; i++)
-		{
-			System.out.println(lines[i]);
-		}
-	}
-
+	/**
+	 * Populate data structures
+	 * 
+	 * @param lines
+	 *            String[] represents the input files as array of strings where each
+	 *            element is a line of input
+	 */
 	public static void toStruct(String[] lines)
 	{
 		for (int i = 0; i < lines.length; i++)
@@ -87,6 +84,12 @@ public class JuggleFest
 
 	}
 
+	/**
+	 * Populate the circuit data
+	 * 
+	 * @param line
+	 *            String is the input line consisting of circuit data
+	 */
 	public static void toCircuitStruct(String line)
 	{
 
@@ -108,6 +111,13 @@ public class JuggleFest
 		c.setPizzaz(p);
 	}
 
+	/**
+	 * Populate the juggler data
+	 * 
+	 * @param line
+	 *            String represents the input for a juggler
+	 * @return Juggler instance of
+	 */
 	public static Juggler toJugglerStruct(String line)
 	{
 		Juggler j = new Juggler();
@@ -139,7 +149,10 @@ public class JuggleFest
 		return j;
 	}
 
-	public static void score()
+	/**
+	 * Assign jugglers to circuits
+	 */
+	public static void assignJugglers()
 	{
 
 		final int maxJugglersPerCircuit = jugglerList.size() / Circuit.getAllCircuits().size();
@@ -175,8 +188,8 @@ public class JuggleFest
 				{
 					Juggler lastJuggler = c.getJugglerWithLowestScore();
 					/*
-					 * See if this juggler could be a better fit for this circuit of his score is
-					 * higher than the lowest scoring juggler assigned
+					 * See if this juggler could be a better fit for this circuit.  If his score is
+					 * higher than the lowest scoring juggler, then replace the low scoring juggler
 					 */
 					if (nextJuggler.getCircuitScore(c) > lastJuggler.getCircuitScore(c))
 					{
@@ -189,6 +202,9 @@ public class JuggleFest
 						lastJuggler.setAssignedCircuit(null);
 						jugglerList.add(lastJuggler);
 
+						/*
+						 * add the better scoring juggler to the circuit
+						 */
 						c.addJuggler(nextJuggler);
 						jugglerList.remove(nextJuggler);
 						nextJuggler.setAssigned(true);
@@ -214,6 +230,9 @@ public class JuggleFest
 
 	}
 
+	/**
+	 * Print the output
+	 */
 	public static void printOutput()
 	{
 		for (Circuit c : Circuit.getAllCircuits().values())
